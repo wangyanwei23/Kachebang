@@ -57,7 +57,6 @@ var Kachebang = React.createClass({
 
               <TabBarIOS.Item
                  title="附近"
-                 badge="2"
                  icon={require('./img/nav_nearby.png')}
                  onPress={this.changeTab.bind(this, 'nearby')}
                  selected={this.state.selectedTab === 'nearby'}

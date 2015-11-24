@@ -27,7 +27,7 @@ RCT_EXPORT_MODULE();
 	return map;
 }
 
-RCT_EXPORT_METHOD(addPointAnnotation:(NSNumber *)reactTag latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude title:(NSString*)title)
+RCT_EXPORT_METHOD(addPointAnnotation:(NSNumber *)reactTag latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude title:(NSString *)title)
 {
 	[self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, RCTSparseArray *viewRegistry) {
 		BaiduMap *view = viewRegistry[reactTag];

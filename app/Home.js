@@ -9,11 +9,13 @@ var {
     Image,
     ScrollView,
     TouchableHighlight,
+    TouchableWithoutFeedback,
+    TouchableOpacity,
     ListView
 } = React;
 
 var LNGList = require('./LNGList');
-var OilList = require('./OilList');
+var OilList = require('./GASList');
 var MapView = require('./MapView');
 
 var Buttons = React.createClass({
@@ -39,42 +41,21 @@ var Buttons = React.createClass({
     render: function() {
         return (
             <View style={styles.buttons}>
-              <View style={{flex: 1, flexDirection: 'row'}}>
 
-                <TouchableHighlight onPress={() => this.loadPage('oil', 'Map', OilList, MapView)} underlayColor={'#F5F5F5'} style={{flex: 1}}>
-                  <View style={{flex: 1, borderRightWidth: 0.5, borderBottomWidth: 0.5, alignItems: 'center', justifyContent: 'center'}}>
-                    <Image style={{width: 70, height: 70,}} source={require('../img/dashboard_fuel.png')}/>
-                    <Text style={{fontSize: 20, marginTop: 10}}>加油站</Text>
-                  </View>
-                </TouchableHighlight>
-
-                <TouchableHighlight underlayColor={'#F5F5F5'} style={{flex: 1}}>
-                  <View style={{flex: 1, borderBottomWidth: 0.5, alignItems: 'center', justifyContent: 'center'}}>
-                    <Image style={{width: 70, height: 70,}} source={require('../img/dashboard_trader.png')}/>
-                    <Text style={{fontSize: 20, marginTop: 10}}>汽贸</Text>
-
-                  </View>
-                </TouchableHighlight>
-
-              </View>
-
-              <View style={{flex: 1, flexDirection: 'row'}}>
-
-                <TouchableHighlight onPress={() => this.loadPage('LNG', 'Map', LNGList, MapView)} style={{flex: 1}} underlayColor={'#F5F5F5'}>
-                  <View style={{flex: 1, borderRightWidth: 0.5, alignItems: 'center', justifyContent: 'center'}}>
-                    <Image style={{width: 70, height: 70,}} source={require('../img/dashboard_lng.png')}/>
-                    <Text style={{fontSize: 20, marginTop: 10}}>加气站</Text>
-                  </View>
-                </TouchableHighlight>
-
-                <TouchableHighlight underlayColor={'#F5F5F5'} style={{flex: 1}}>
+              <TouchableWithoutFeedback onPress={() => this.loadPage('GAS', 'Map', OilList, MapView)} underlayColor={'#F5F5F5'} style={{flex: 1}}>
                 <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                    <Image style={{width: 70, height: 70,}} source={require('../img/dashboard_repair.png')}/>
-                    <Text style={{fontSize: 20, marginTop: 10}}>维修救援</Text>
-                  </View>
-                </TouchableHighlight>
+                  <Image style={{width: 70, height: 70,}} source={require('../img/dashboard_fuel.png')}/>
+                  <Text style={{fontSize: 20, marginTop: 10}}>加油站</Text>
+                </View>
+              </TouchableWithoutFeedback>
 
-              </View>
+
+              <TouchableWithoutFeedback onPress={() => this.loadPage('LNG', 'Map', LNGList, MapView)} style={{flex: 1}} underlayColor={'#F5F5F5'}>
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                  <Image style={{width: 70, height: 70,}} source={require('../img/dashboard_lng.png')}/>
+                  <Text style={{fontSize: 20, marginTop: 10}}>加气站</Text>
+                </View>
+              </TouchableWithoutFeedback>
             </View>
         );
     },
@@ -85,7 +66,7 @@ var Home = React.createClass({
     render: function() {
         return (
             <View style={styles.container}>
-                <Buttons navigator={this.props.navigator}/>
+              <Buttons navigator={this.props.navigator}/>
             </View>
         );
     },
@@ -97,8 +78,7 @@ var styles = StyleSheet.create({
     },
     buttons: {
         flex: 1,
-        marginTop: 65,
-        marginBottom: 50,
+        flexDirection: 'row'
     },
 });
 
